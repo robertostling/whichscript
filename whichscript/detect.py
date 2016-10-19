@@ -1,11 +1,13 @@
 from collections import Counter
 
-from iso15924 import UNICODE_ISO
+from .iso15924 import UNICODE_ISO
 
 
 def detect_script(text):
     """Return a best guess for the script of the given text string"""
-    counts = Counter(UNICODE_ISO.get(ord(c)) for c in text)
+    counts = Counter()
+    for c, n in Counter(text).items():
+        counts[UNICODE_ISO.get(ord(c))] += n
     useless = {None, 'Zyyy'}
     for iso in useless:
         del counts[iso]

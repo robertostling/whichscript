@@ -11,7 +11,7 @@ from collections import Counter, defaultdict
 
 def _parse_variants():
     path = os.path.join(
-            os.path.dirname(__file__), '..', 'data', 'Unihan_Variants.txt')
+            os.path.dirname(__file__), 'data', 'Unihan_Variants.txt')
     re_variant = re.compile(r'U\+([0-9A-F]+)\t(\w+)\tU\+([0-9A-F]+)')
     simplified = defaultdict(set)
     traditional = defaultdict(set)
@@ -31,7 +31,7 @@ def _parse_variants():
 
 def _parse_conversion():
     path = os.path.join(
-            os.path.dirname(__file__), '..', 'data', 'PropertyValueAliases.txt')
+            os.path.dirname(__file__), 'data', 'PropertyValueAliases.txt')
     re_entry = re.compile(r'sc\s+;\s+([A-Z][a-z]{3})\s+;\s+(\w+)\s+')
     table = {}
     with open(path, 'r', encoding='utf-8') as f:
@@ -43,7 +43,7 @@ def _parse_conversion():
 
 def _parse_data():
     path = os.path.join(
-            os.path.dirname(__file__), '..', 'data', 'Scripts.txt')
+            os.path.dirname(__file__), 'data', 'Scripts.txt')
     re_range = re.compile(r'([0-9A-F]+)(?:\.\.([0-9A-F]+))\s+;\s+(.+?)\s+#')
     point_script = {}
     with open(path, 'r', encoding='utf-8') as f:
@@ -59,7 +59,7 @@ def _parse_data():
 
 def _parse_mappings():
     path = os.path.join(
-            os.path.dirname(__file__), '..', 'data',
+            os.path.dirname(__file__), 'data',
             'Unihan_OtherMappings.txt')
     re_mapping = re.compile(r'U\+([0-9A-F]+)\t(\w+)\t')
     hant = set()
